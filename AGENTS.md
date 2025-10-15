@@ -35,9 +35,9 @@ shared/                   # Types used by both client & server
 
 The routing system is powered by React Router 6:
 
-- `client/pages/Index.tsx` represents the home page.
-- Routes are defined in `client/App.tsx` using the `react-router-dom` import
-- Route files are located in the `client/pages/` directory
+- `client/src/pages/Index.tsx` represents the home page.
+- Routes are defined in `client/src/App.tsx` using the `react-router-dom` import
+- Route files are located in the `client/src/pages/` directory
 
 For example, routes can be defined with:
 
@@ -54,8 +54,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 ### Styling System
 
 - **Primary**: TailwindCSS 3 utility classes
-- **Theme and design tokens**: Configure in `client/global.css` 
-- **UI components**: Pre-built library in `client/components/ui/`
+- **Theme and design tokens**: Configure in `client/src/global.css`
+- **UI components**: Pre-built library in `client/src/components/ui/`
 - **Utility**: `cn()` function combines `clsx` + `tailwind-merge` for conditional classes
 
 ```typescript
