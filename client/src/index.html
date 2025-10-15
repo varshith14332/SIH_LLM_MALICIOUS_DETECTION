@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0F1C" />
+    <meta
+      name="description"
+      content="AI Defense Intelligence – Detecting & Mitigating Malicious LLM-Generated Disinformation. Verify content, visualize threats, and audit integrity with a futuristic cyber-defense platform."
+    />
+    <link rel="icon" href="/placeholder.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <title>AI Defense Intelligence</title>
+    <script>
+      (function () {
+        try {
+          const stored = localStorage.getItem("theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          const isDark = stored ? stored === "dark" : prefersDark;
+          document.documentElement.classList.toggle("dark", isDark);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script>
+      // Ensure no stale service workers/cache cause duplicate module copies in dev
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .getRegistrations()
+          .then((regs) => regs.forEach((r) => r.unregister()))
+          .catch(() => {});
+        if (window.caches && caches.keys) {
+          caches
+            .keys()
+            .then((keys) =>
+              keys.forEach((k) => /^adi-cache-/.test(k) && caches.delete(k)),
+            )
+            .catch(() => {});
+        }
+      }
+    </script>
+    <script type="module" src="/client/src/main.tsx"></script>
+    <!-- Service worker registration disabled in dev to avoid caching dev modules. Enable for production only. -->
+  </body>
+</html>
