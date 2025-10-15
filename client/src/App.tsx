@@ -1,7 +1,4 @@
-import "./global.css";
-
-import { createRoot } from "react-dom/client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -96,4 +93,4 @@ const App = () => {
   );
 };
 
-createRoot(document.getElementById("root")!).render(<App />);
+export default App;

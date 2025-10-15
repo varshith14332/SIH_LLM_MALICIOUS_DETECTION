@@ -43,7 +43,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./client"),
+      "@": path.resolve(__dirname, "./client/src"),
       "@shared": path.resolve(__dirname, "./shared"),
       // Ensure server build resolves to same React copy
       react: path.resolve(__dirname, "./node_modules/react"),
