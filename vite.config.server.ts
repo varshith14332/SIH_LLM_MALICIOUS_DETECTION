@@ -1,57 +1,37 @@
 import { defineConfig } from "vite";
 import path from "path";
 
-// Server build configuration
 export default defineConfig({
   build: {
-    lib: {
-      entry: path.resolve(__dirname, "server/node-build.ts"),
-      name: "server",
-      fileName: "production",
-      formats: ["es"],
-    },
-    outDir: "dist/server",
-    target: "node22",
-    ssr: true,
+    ssr: path.resolve(__dirname, "server/node-build.ts"), // Entry for SSR
+    outDir: path.resolve(__dirname, "dist/server"),       // Output folder
+    target: "node22",                                     // Node target
     rollupOptions: {
       external: [
-        // Node.js built-ins
-        "fs",
-        "path",
-        "url",
-        "http",
-        "https",
-        "os",
-        "crypto",
-        "stream",
-        "util",
-        "events",
-        "buffer",
-        "querystring",
-        "child_process",
-        // External dependencies that should not be bundled
-        "express",
-        "cors",
+        // Node built-ins
+        "fs","path","url","http","https","os","crypto","stream",
+        "util","events","buffer","querystring","child_process",
+        // Dependencies not to bundle
+        "express","cors"
       ],
       output: {
         format: "es",
-        entryFileNames: "[name].mjs",
-      },
+        entryFileNames: "[name].mjs"
+      }
     },
-    minify: false, // Keep readable for debugging
-    sourcemap: true,
+    minify: false,    // Keep readable for debugging
+    sourcemap: true,  // Useful for stack traces
   },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./client/src"),
       "@shared": path.resolve(__dirname, "./shared"),
-      // Ensure server build resolves to same React copy
       react: path.resolve(__dirname, "./node_modules/react"),
       "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
     },
-    dedupe: ["react", "react-dom"],
+    dedupe: ["react","react-dom"]
   },
   define: {
-    "process.env.NODE_ENV": '"production"',
-  },
+    "process.env.NODE_ENV": '"production"'
+  }
 });
