@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => ({
     outDir: "dist/spa",     // output folder for Vercel
     emptyOutDir: true,      // clear folder before build
     rollupOptions: {
-      input: path.resolve(__dirname, "client/index.html"), // SPA entry point
+      input: path.resolve(__dirname, "client/src/index.html"), // SPA entry point
     },
   },
   plugins: [
